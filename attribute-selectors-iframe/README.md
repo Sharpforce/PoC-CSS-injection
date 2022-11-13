@@ -74,7 +74,9 @@ const isQuoteFiltered = true;
 
 ### Retrieving a value from a password field
 
-
+![](https://github.com/Sharpforce/PoC-CSS-injection/blob/master/attribute-selectors-iframe/demo/attribute-selectors-iframe-password.gif)
 
 ### Retrieving a value from a hidden field
+
+![](https://github.com/Sharpforce/PoC-CSS-injection/blob/master/attribute-selectors-iframe/demo/attribute-selectors-iframe-hidden.gif)
 

@@ -74,5 +74,8 @@ const isQuoteFiltered = true;
 
 ### Récupération d'une valeur d'un champ de type password
 
+![](https://github.com/Sharpforce/PoC-CSS-injection/blob/master/attribute-selectors-popup/demo/attribute-selectors-popup-password.gif)
 
 ### Récupération d'une valeur d'un champ de type hidden
+
+![](https://github.com/Sharpforce/PoC-CSS-injection/blob/master/attribute-selectors-popup/demo/attribute-selectors-popup-hidden.gif)
