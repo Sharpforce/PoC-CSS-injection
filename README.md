@@ -10,4 +10,4 @@ The link to the full article is [here (French)](https://sharpforce.gitbook.io/cy
 
 ## Demo
 
-![](https://github.com/Sharpforce/PoC-CSS-injection/blob/master/attribute-selectors-iframe/targets/password.php)
+![](https://github.com/Sharpforce/PoC-CSS-injection/blob/master/attribute-selectors-iframe/demo/attribute-selectors-iframe-password.gif)
