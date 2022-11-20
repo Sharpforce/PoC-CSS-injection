@@ -24,4 +24,4 @@ https://attacker.com/
 
 ## Demo
 
-![](https://github.com/Sharpforce/PoC-CSS-injection/blob/master/attribute-selectors-popup/demo/attribute-selectors-popup-password.gif)
+![](https://github.com/Sharpforce/PoC-CSS-injection/blob/master/font-face-and-unicode-descriptor/demo/font-face-and-unicode-descriptor.gif)
