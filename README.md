@@ -9,7 +9,3 @@ PoC to exploit a CSS injection using attribute selectors, the has() pseudo-class
 The link to the articles are here:
 -  [Part 1](https://sharpforce.gitbook.io/cybersecurity/mon-blog/2022/novembre/les-injections-css-partie-1) (French).
 -  [Part 2](https://sharpforce.gitbook.io/cybersecurity/mon-blog/2022/novembre/les-injections-css-partie-2) (French).
-
-## Demo
-
-![](https://github.com/Sharpforce/PoC-CSS-injection/blob/master/attribute-selectors-iframe/demo/attribute-selectors-iframe-password.gif)

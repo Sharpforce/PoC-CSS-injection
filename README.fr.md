@@ -9,7 +9,3 @@ PoC d'exploitation d'une injection CSS en utilisant les sélecteurs d'attributs,
 Le lien vers les articles sont ici :
 -  [Partie 1](https://sharpforce.gitbook.io/cybersecurity/mon-blog/2022/novembre/les-injections-css-partie-1).
 -  [Partie 2](https://sharpforce.gitbook.io/cybersecurity/mon-blog/2022/novembre/les-injections-css-partie-2).
-
-## Démo
-
-![](https://github.com/Sharpforce/PoC-CSS-injection/blob/master/attribute-selectors-iframe/demo/attribute-selectors-iframe-password.gif)
