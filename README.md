@@ -15,3 +15,4 @@ The link to the articles are here:
 -  [Part 1](https://sharpforce.gitbook.io/cybersecurity/mon-blog/2022/novembre/les-injections-css-partie-1) (French).
 -  [Part 2](https://sharpforce.gitbook.io/cybersecurity/mon-blog/2022/novembre/les-injections-css-partie-2) (French).
 -  [Part 3](https://sharpforce.gitbook.io/cybersecurity/mon-blog/2022/decembre/les-injections-css-partie-3) (French).
+-  [Part 4](https://sharpforce.gitbook.io/cybersecurity/mon-blog/2022/decembre/les-injections-css-partie-4) (French).
