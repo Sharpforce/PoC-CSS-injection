@@ -6,10 +6,10 @@ __Read this in other languages:__ [English](README.md), [Français](README.fr.md
 
 PoC to exploit a CSS injection using :
 - [Attribute selectors with iframe](https://github.com/Sharpforce/PoC-CSS-injection/tree/master/attribute-selectors-iframe)
-- [Has() pseudo class with iframe](https://github.com/Sharpforce/PoC-CSS-injection/tree/master/has-attribute-selectors-iframe)
+- [Has() pseudo-class with iframe](https://github.com/Sharpforce/PoC-CSS-injection/tree/master/has-attribute-selectors-iframe)
 - [Attribute selectors with popup](https://github.com/Sharpforce/PoC-CSS-injection/tree/master/attribute-selectors-popup)
 - [@Font-face an unicode descriptor](https://github.com/Sharpforce/PoC-CSS-injection/tree/master/font-face-and-unicode-descriptor)
-- [@import rule with has() plseudo](https://github.com/Sharpforce/PoC-CSS-injection/tree/master/has-attribute-selectors-import)
+- [@import rule with has() pseudo-class](https://github.com/Sharpforce/PoC-CSS-injection/tree/master/has-attribute-selectors-import)
 
 The link to the articles are here:
 -  [Part 1](https://sharpforce.gitbook.io/cybersecurity/mon-blog/2022/novembre/les-injections-css-partie-1) (French).
